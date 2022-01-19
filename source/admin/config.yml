@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+publish_mode: editorial_workflow
+media_folder: "source/assets/images"
+public_folder: "/assets/images"
+collections:
+  - name: "artists"
+    label: "Artists"
+    folder: "source/_artists"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "artists/{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "_layouts/artist"}
+      - {label: "Name", name: "title", widget: "string"}
+      - {label: "Image", name: "image", widget: "image", allow_multiple: false, choose_url: false}
+      - {label: "Bio", name: "bio", widget: "markdown", minimal: true, buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list", "quote"], editor_components: [], modes: ["rich_text"]}
+  - name: "artworks"
+    label: "Artworks"
+    folder: "source/_artworks"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "artworks/{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "date"}
+      - {label: "Image", name: "image", widget: "image", allow_multiple: false, choose_url: false}
+      - {label: "Artist", name: "artist", widget: "relation", collection: "artists", search_fields: ["title"], value_field: "{{slug}}"}

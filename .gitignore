@@ -1,0 +1,12 @@
+/build_local/
+/cache/
+/node_modules/
+/vendor/
+/.idea/
+/.vscode/
+npm-debug.log
+
+/build_staging/
+/build_production/
+/source/assets/css
+/source/assets/js
